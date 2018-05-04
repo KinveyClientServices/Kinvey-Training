@@ -1,0 +1,18 @@
+#tagline {
+  font-family: "Helvetica", "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+  font-size: 18px; 
+  /* font-style: italic; */
+  font-variant: normal;
+  font-weight: bold;
+  line-height: 26.4px;
+  /* color: #000000; */
+}
+
+.Tagline label{
+  font-family: "Baskerville", "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+  font-size: 555px; 
+  font-style: italic; 
+  font-variant: normal;
+  font-weight: bold;
+  line-height: 26.4px;
+}

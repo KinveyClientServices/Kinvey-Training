@@ -1,0 +1,45 @@
+<page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:drawer="nativescript-ui-sidedrawer" xmlns:widgets="shared/widgets" xmlns:statusbar="nativescript-statusbar" loaded="onPageLoaded">
+    <statusbar:StatusBar ios:barStyle="light" />
+    <page.actionBar>
+        <action-bar title="Add Task">
+            <navigation-button icon="res://ic_menu" tap="toggleDrawer" ios:visibility="collapsed" />
+            <action-bar.actionItems>
+                <ios>
+                    <action-item icon="res://ic_menu" ios.position="left" tap="toggleDrawer" />
+                    <action-item ios.systemIcon="15" ios.position="right" tap="picMe" />
+                </ios>
+                <android>
+                    <action-item android.systemIcon="17301559" ios.position="right" tap="picMe" />
+                </android>
+            </action-bar.actionItems>
+        </action-bar>
+    </page.actionBar>
+    <drawer:RadSideDrawer id="drawer">
+        <drawer:RadSideDrawer.mainContent>
+      
+      	<ScrollView>
+	
+			<!--<Switch checked="{{ isComplete }}" />-->
+			<StackLayout class="form" orientation="vertical" loaded="contentLoaded">
+            <ActivityIndicator busy="{{isLoading}}" margin="10 0 0 0"></ActivityIndicator>
+				<Image width="10%" src="{{myTaskImage}}" margin="10 0 0 0" id="taskImage" />
+				<TextField class="input input-border" id="action" text="{{ myAction }}" hint="Enter Task" />
+				<!-- <TextField class="input input-border" id="duedate" text="{{ myDueDate }}" hint="due date"/>  -->
+                
+				<Label class="body" text="Due Date" style="font-size:15px"></Label>
+				<DatePicker date="{{myDueDate}}" />
+                		
+				<Label class="body" text="is complete?" style="font-size:15px"></Label>
+				<Switch checked="{{ isComplete }}" />
+				<Button class="btn btn-outline" tap="taskSubmit" text="submit" />
+			</StackLayout>
+			
+	
+	</ScrollView>
+        </drawer:RadSideDrawer.mainContent>
+        <drawer:RadSideDrawer.drawerContent>
+            <widgets:drawer-content />
+        </drawer:RadSideDrawer.drawerContent>
+    </drawer:RadSideDrawer>
+
+</page>

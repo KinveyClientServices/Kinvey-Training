@@ -1,0 +1,29 @@
+<page 
+  xmlns="http://schemas.nativescript.org/tns.xsd" 
+  xmlns:drawer="nativescript-ui-sidedrawer" 
+  xmlns:widgets="shared/widgets" 
+  xmlns:statusbar="nativescript-statusbar" loaded="contentLoaded" navigatingTo="navigatingTo">
+  <statusbar:StatusBar ios:barStyle="light" />
+  <page.actionBar>
+    <action-bar title="Home">
+      <navigation-button icon="res://ic_menu" tap="toggleDrawer" ios:visibility="collapsed" />
+      <action-bar.actionItems>
+        <ios>
+          <action-item icon="res://ic_menu" ios.position="left" tap="toggleDrawer" />
+        </ios>
+      </action-bar.actionItems>
+    </action-bar>
+  </page.actionBar>
+  <drawer:RadSideDrawer id="drawer">
+    <drawer:RadSideDrawer.mainContent>
+      <!-- Home page contents -->
+      <stack-layout>
+        <image src="{{ brand.NLogoFileName }}" id="logo" width="50%" margin="40 0 10 0" />
+        <label id="tagline" margin="20" horizontalAlignment="center" textWrap="true" class="Tagline" text="{{ brand.HomeScreenText }}"/>
+      </stack-layout>
+    </drawer:RadSideDrawer.mainContent>
+    <drawer:RadSideDrawer.drawerContent>
+      <widgets:drawer-content />
+    </drawer:RadSideDrawer.drawerContent>
+  </drawer:RadSideDrawer>
+</page>

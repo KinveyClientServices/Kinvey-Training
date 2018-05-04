@@ -1,0 +1,35 @@
+<page 
+    xmlns="http://schemas.nativescript.org/tns.xsd" 
+    xmlns:drawer="nativescript-ui-sidedrawer" 
+    xmlns:widgets="shared/widgets" 
+    xmlns:lv="nativescript-telerik-ui/listview" 
+    xmlns:statusbar="nativescript-statusbar" loaded="onPageLoad">
+    <statusbar:StatusBar ios:barStyle="light" />
+    <page.actionBar>
+        <action-bar title="Account Detail">
+            <navigation-button icon="res://ic_menu" tap="toggleDrawer" ios:visibility="collapsed" />
+            <action-bar.actionItems>
+                <ios>
+                    <!--<action-item icon="res://ic_back" ios.position="left" tap="goBack" />-->
+                    <!--<action-item ios.systemIcon="19" ios.position="left" tap="addMe" />-->
+                    <navigation-button text="GO BACK" tap="goBack"/>
+                </ios>
+                <android>
+                    <navigation-button text="GO BACK" tap="goBack"/>
+                </android>
+            </action-bar.actionItems>
+        </action-bar>
+    </page.actionBar>
+    <drawer:RadSideDrawer id="drawer">
+        <drawer:RadSideDrawer.mainContent>
+            <StackLayout orientation="vertical" textAlignment="right" row="0" col="1">
+                <Label text="{{name}}" fontAttributes="Bold" class="h1"/>
+                <Label text="{{company }}" class="h3" />
+            </StackLayout>
+            <lv:RadListView.footerItemTemplate></lv:RadListView.footerItemTemplate>
+        </drawer:RadSideDrawer.mainContent>
+        <drawer:RadSideDrawer.drawerContent>
+            <widgets:drawer-content />
+        </drawer:RadSideDrawer.drawerContent>
+    </drawer:RadSideDrawer>
+</page>

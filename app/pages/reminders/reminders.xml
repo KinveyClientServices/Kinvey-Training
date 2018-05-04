@@ -1,0 +1,47 @@
+<page 
+  xmlns="http://schemas.nativescript.org/tns.xsd" 
+  xmlns:drawer="nativescript-ui-sidedrawer" 
+  xmlns:widgets="shared/widgets" 
+  xmlns:lv="nativescript-telerik-ui/listview" 
+  xmlns:statusbar="nativescript-statusbar"
+  loaded="pageLoaded">
+  <statusbar:StatusBar ios:barStyle="light" />
+    <page.actionBar>
+        <action-bar title="Reminders">
+            <navigation-button icon="res://ic_menu" tap="toggleDrawer" ios:visibility="collapsed" />
+            <action-bar.actionItems>
+                <ios>
+                    <action-item icon="res://ic_menu" ios.position="left" tap="toggleDrawer" />
+                    <action-item ios.systemIcon="4" ios.position="right" tap="addMe" />
+                <action-item ios.systemIcon="13" ios.position="right" tap="syncMe" visibility="{{ synched ? 'collapse' : 'visible' }}" />
+
+                </ios>
+            </action-bar.actionItems>
+        </action-bar>
+    </page.actionBar>
+    <drawer:RadSideDrawer id="drawer">
+        <drawer:RadSideDrawer.mainContent>
+        <ListView id="listview" items="{{ myItems, myItems }}" loaded="contentLoaded" separatorColor="#000000">
+                <ListView.itemTemplate>
+                    <GridLayout columns="75,*" rows="*">
+                       
+                       <Image src="{{icon, icon}}" stretch="aspectFill" height="40" width="40" />
+                    <StackLayout orientation="vertical" textAlignment="left" style.backgroundColor="#A6D3EB" row="0" col="1">
+                      
+                
+                        <Label text="{{ remindname, remindname }}" textAlignment="right" fontAttributes="Bold" />
+                        <Label text="{{ notes, notes }}" textWrap="true" textAlignment="right" class="h3"/>
+                    </StackLayout>
+
+                    </GridLayout>
+
+                </ListView.itemTemplate>
+                
+            </ListView>   
+            
+        </drawer:RadSideDrawer.mainContent>
+        <drawer:RadSideDrawer.drawerContent>
+            <widgets:drawer-content />
+        </drawer:RadSideDrawer.drawerContent>
+    </drawer:RadSideDrawer>
+</page>

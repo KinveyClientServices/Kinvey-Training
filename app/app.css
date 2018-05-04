@@ -1,0 +1,71 @@
+﻿@import url('~/platform.css');
+@import '~/nativescript-theme-core/css/core.light.css';
+
+/* action-bar {
+  background-color: #f1582c; 
+  color: white;
+} */
+label {
+  margin: 20;
+}
+
+.drawer-content {
+  background-color: #f1582c;
+  color: white;
+  padding-top: 20;
+}
+.drawer-content label {
+  font-size: 16;
+  margin: 10 0 15 25;
+  color:white;
+}
+.selected {
+  color: #ffdf8f;
+}
+
+.footer {
+    background-color: #8C489F;
+    color: whitesmoke;
+    border-radius: 3;
+}
+
+.icon {
+   font-family: 'icomoon';
+   font-size: 15;
+   color: #ff0000;
+}
+
+Page {
+    /*background-color: white;*/
+    font-size: 17;
+}
+TextField {
+    margin: 10;
+    padding: 10;
+    border-style: solid;
+    border-bottom: thick dotted #ff0000;
+}
+
+.taskinput {
+  border-style: solid;
+    border-bottom: thick dotted #ff0000;
+}
+
+
+/*Image {
+    margin-top: 20;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 80;
+}*/
+
+Button {
+    background: #454545;
+    margin: 10;
+    padding: 10
+}
+
+.icon {
+   font-family: 'icomoon';
+   font-size: 48;
+}

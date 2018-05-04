@@ -1,0 +1,36 @@
+<page
+  xmlns="http://schemas.nativescript.org/tns.xsd"
+  xmlns:drawer="nativescript-ui-sidedrawer"
+  xmlns:widgets="shared/widgets"
+  xmlns:statusbar="nativescript-statusbar"
+  loaded="pageLoaded"
+  navigatingTo="onNavigatingTo"
+  xmlns:pdf="nativescript-pdf-view">
+
+  <statusbar:StatusBar ios:barStyle="light" />
+
+  <page.actionBar>
+    <action-bar title="Reference Detail">
+
+      <!--<navigation-button ios.systemIcon="8" tap="onBackButton" ios:visibility="collapsed" />-->
+      <action-bar.actionItems>
+        <ios>
+          <action-item tap="onBackButton" ios.position="left" />
+        </ios>
+      </action-bar.actionItems>
+    </action-bar>
+  </page.actionBar>
+
+  <drawer:RadSideDrawer id="drawer">
+    <drawer:RadSideDrawer.mainContent>
+      
+  <pdf:PDFView src="{{url}}" load="{{ onLoad }}" />
+
+
+    </drawer:RadSideDrawer.mainContent>
+    <drawer:RadSideDrawer.drawerContent>
+      <widgets:drawer-content />
+    </drawer:RadSideDrawer.drawerContent>
+  </drawer:RadSideDrawer>
+
+</page>

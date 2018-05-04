@@ -1,0 +1,43 @@
+<page 
+  xmlns="http://schemas.nativescript.org/tns.xsd" 
+  xmlns:drawer="nativescript-ui-sidedrawer" 
+  xmlns:widgets="shared/widgets" 
+  xmlns:lv="nativescript-telerik-ui/listview" 
+  xmlns:statusbar="nativescript-statusbar"
+  loaded="onPageLoad">
+
+  <statusbar:StatusBar ios:barStyle="light" />
+
+    <page.actionBar>
+        <action-bar title="Products">
+            <navigation-button icon="res://ic_menu" tap="toggleDrawer" ios:visibility="collapsed" />
+            <action-bar.actionItems>
+                <ios>
+                    <action-item icon="res://ic_menu" ios.position="left" tap="toggleDrawer" />
+                    
+                </ios>
+            </action-bar.actionItems>
+         
+        </action-bar>
+    </page.actionBar>
+    <drawer:RadSideDrawer id="drawer">
+        <drawer:RadSideDrawer.mainContent>
+           
+    <ListView id="listview" items="{{ myItems }}"  loaded="contentLoaded" separatorColor="#000000">
+            <ListView.itemTemplate>
+                <StackLayout orientation="horizontal">
+                  <!--<Image src="{{ ionicURL }}" />-->
+                  <Image src="{{ Nimg }}" id="picture" width="20%" margin="20 0 0 0" />
+               <Label text="{{ title }}" textWrap="true"/>
+                <!--<Label text="{{ img }}" textWrap="true" />-->
+                
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView>
+        
+        </drawer:RadSideDrawer.mainContent>
+        <drawer:RadSideDrawer.drawerContent>
+            <widgets:drawer-content />
+        </drawer:RadSideDrawer.drawerContent>
+    </drawer:RadSideDrawer>
+</page>

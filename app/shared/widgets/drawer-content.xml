@@ -1,0 +1,17 @@
+<grid-layout class="drawer-content">
+  <stack-layout>
+    <label id="login" text="Login" tap="navigate" class="{{ selectedPage == 'login' ? 'selected' : '' }}" />
+    <label id = "home" text="Home" tap="navigate" class="{{ selectedPage == 'home' ? 'selected' : '' }}" />
+    <!-- <label id="products" text="Products" tap="navigate" class="{{ selectedPage == 'products' ? 'selected' : '' }}" /> -->
+    <!-- <label id="search" text="Search" tap="navigate" class="{{ selectedPage == 'search' ? 'selected' : '' }}" /><label id="reference" text="Reference" tap="navigate" class="{{ selectedPage == 'reference' ? 'selected' : '' }}" /> -->
+    <label id="accounts" text="Accounts" tap="navigate" class="{{ selectedPage == 'accounts' ? 'selected' : '' }}" />
+    <!--<label text="Settings" tap="navigate" class="{{ selectedPage == 'settings' ? 'selected' : '' }}" />-->
+    <!-- <label text="Tasks" tap="navigate" class="{{ selectedPage == 'tasks' ? 'selected' : '' }}" />-->
+    <label id="tasks" text="Tasks" tap="navigate" class="{{ selectedPage == 'tasks' ? 'selected' : '' }}" />
+    <label id="taskadd" text="Add Task" tap="navigate" class="{{ selectedPage == 'Add Task' ? 'selected' : '' }}" />
+    <!-- <label id="offline" text="Offline" tap="navigate" class="{{ selectedPage == 'offline' ? 'selected' : '' }}" /> -->
+    <label id="map" text="Map" tap="navigate" class="{{ selectedPage == 'map' ? 'selected' : '' }}" />
+    <label id="logout" text="Logout" tap="navigate" class="{{ selectedPage == 'logout' ? 'selected' : '' }}" />
+    <!--<label text="Map" tap="navigate" class="{{ selectedPage == 'map' ? 'selected' : '' }}" />-->
+  </stack-layout>
+</grid-layout>
