@@ -1,0 +1,13 @@
+.vscode
+node_modules
+platforms
+logs
+*.log
+.env
+.nsbuildinfo
+.nslivesyncinfo
+app/pages/.DS_Store
+.DS_Store
+app/.DS_Store
+app/pages/taskadd/.DS_Store
+*/.DS_Store
