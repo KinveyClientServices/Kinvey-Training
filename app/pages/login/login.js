@@ -116,7 +116,7 @@ LoginPage.prototype.signInMIC = function (args) {
         alert("User logged in. Log out first")
     }
     else {
-        Kinvey.User.loginWithMIC('http://localhost:8100', Kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, { version: 'v2' })
+        Kinvey.User.loginWithMIC('http://example.com/callback', Kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, { version: 'v2' })
             .then(function (user) {
                 console.log(user);
                 topmost().navigate("pages/home/home");
