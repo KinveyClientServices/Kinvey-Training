@@ -18,7 +18,7 @@
     <drawer:RadSideDrawer.mainContent>
       <StackLayout class="form" orientation="vertical" loaded="navigateTo">
         <image src="res://kinvey-logo" id="logo" width="50%" margin="40 0 10 0" />
-        <TextField id="email" hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none" class="input input-border" />
+        <TextField id="email" hint="Username" keyboardType="email" autocorrect="false" autocapitalizationType="none" class="input input-border" />
         <TextField class="input input-border" id="pw" hint="Password" secure="true" />
         <Button class="btn btn-outline" text="Sign in" tap="signIn"/>
         <Button class="btn btn-outline" text="Sign up" tap="signUp"/>

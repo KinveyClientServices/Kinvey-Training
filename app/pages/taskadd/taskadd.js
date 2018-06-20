@@ -91,7 +91,7 @@ saveTask = function (entity) {
     console.dir(entity);
     //Now upload the task
 
-    //TASK 3.3: SAVE THE ENTITY IN TASKS
+    //TASK 3.3: SAVE THE ENTITY IN TASKS USING THE SYNC STORE
 
     /*  .then(function (entity) {
          console.log(entity);

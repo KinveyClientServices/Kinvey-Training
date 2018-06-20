@@ -18,7 +18,7 @@ TasksPage.prototype.contentLoaded = function (args) {
     console.log('tasks loaded');
     var page = args.object;
     myItems = new observable_array_1.ObservableArray();
-    //TASK 3.2: RETRIEVE TASKS FROM NETWORK STORE
+    //TASK 3.2: RETRIEVE TASKS FROM SYNC STORE
 
     /*  .subscribe(function (entities) {
          console.log(entities);

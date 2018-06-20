@@ -26,26 +26,25 @@ LoginPage.prototype.signUp = function () {
         email = LoginPage.prototype.pageObject.getViewById("email").text;
         pw = LoginPage.prototype.pageObject.getViewById("pw").text;
         if (email != "") {
-
             //TASK 2.1: ADD CODE FOR SIGNUP.
 
-            /* .then(function (user) {
-                console.log("Succesful signup!");
-                var dataStore = Kinvey.DataStore.collection('DemoBrandingData', Kinvey.DataStoreType.Network);
-                var subscription = dataStore.find()
-                    .subscribe(function (entities) {
-                        console.log(entities);
-                    }, function (error) {
-                        console.log(error);
-                    }, function () {
-                        console.log('finished pulling home data');
-                    });
-                topmost().navigate("pages/home/home");
-            })
-            .catch(function (error) {
-                alert("Failure to signup!")
-                console.log("error");
-            }); */
+            /*  .then(function (user) {
+                 console.log("Succesful signup!");
+                 var dataStore = Kinvey.DataStore.collection('DemoBrandingData', Kinvey.DataStoreType.Network);
+                 var subscription = dataStore.find()
+                     .subscribe(function (entities) {
+                         console.log(entities);
+                     }, function (error) {
+                         console.log(error);
+                     }, function () {
+                         console.log('finished pulling home data');
+                     });
+                 topmost().navigate("pages/home/home");
+             })
+             .catch(function (error) {
+                 alert("Failure to signup!")
+                 console.log("error");
+             }); */
         }
         else {
             console.log("Email/Pass cannot be blank");
@@ -56,8 +55,8 @@ LoginPage.prototype.signUp = function () {
 LoginPage.prototype.signIn = function (args) {
     var sender = args.object;
     var parent = sender.parent;
-    email = view.getViewById(parent, "email");
-    pw = view.getViewById(parent, "pw");
+    email = view.getViewById(parent, "email").text;
+    pw = view.getViewById(parent, "pw").text;
     console.log(email.text);
     //SMI: Check for active user
     var activeUser = Kinvey.User.getActiveUser();
