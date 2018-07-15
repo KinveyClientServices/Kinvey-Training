@@ -16,7 +16,7 @@ var TaskAddViewModel = require("./taskadd-view-model");
 
 var viewModel = new TaskAddViewModel();
 var TaskAddPage = function () {
-
+    var dataStore;
 };
 TaskAddPage.prototype = new BasePage();
 TaskAddPage.prototype.constructor = TaskAddPage;
@@ -27,6 +27,7 @@ TaskAddPage.prototype.contentLoaded = function (args) {
     console.log('tasks add content loaded');
     page = args.object;
     page.bindingContext = viewModel;
+    dataStore = Kinvey.DataStore.collection('tasks', Kinvey.DataStoreType.Sync);
 };
 TaskAddPage.prototype.taskSubmit = function (args) {
     console.log('submitting task');
@@ -87,20 +88,19 @@ TaskAddPage.prototype.taskSubmit = function (args) {
 
 }
 
-saveTask = function (entity) {
-    console.dir(entity);
+saveTask = function (sourceEntity) {
+    console.dir(sourceEntity);
     //Now upload the task
-
     //TASK 3.3: SAVE THE ENTITY IN TASKS USING THE SYNC STORE
-
-    /*  .then(function (entity) {
-         console.log(entity);
-         resetViewModel();
-         alert("Task Added Succesfully");
-     })
-     .catch(function (error) {
-         console.log(error);
-     }); */
+    var promise = dataStore.save(sourceEntity)
+        .then(function (returnedEntity) {
+            console.log(returnedEntity);
+            resetViewModel();
+            alert("Task Added Succesfully");
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
 
 resetViewModel = function () {

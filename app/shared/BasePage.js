@@ -31,6 +31,7 @@ BasePage.prototype.navigate = function (args) {
           alert("User Logged out");
           console.log('logged out');
           topmost().navigate("pages/login/login");
+          page.getViewById("drawer").toggleDrawerState();
         })
         .catch(function (error) {
           console.log(error.message);

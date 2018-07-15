@@ -1,30 +1,32 @@
 var BasePage = require("../../shared/BasePage");
-var topmost = require("ui/frame").topmost;
 var view = require("ui/core/view");
 var Observable = require("data/observable").Observable;
-var observableArray = require("data/observable-array");
 var Kinvey = require('kinvey-nativescript-sdk').Kinvey;
 var geolocation = require("nativescript-geolocation");
-var mapbox = require("nativescript-mapbox");
 var mapmarkers = [];
 var counter = 0;
 var Page;
-var activeUser;
 var mapObject;
+var pageContext;
+var locationObject;
+
 var MapPage = function () { };
 MapPage.prototype = new BasePage();
 MapPage.prototype.constructor = MapPage;
 
-// Place any code you want to run when the home page loads here.
-MapPage.prototype.contentLoaded = function (args) {
-    console.log('map loaded');
-
-};
 MapPage.prototype.onPageLoaded = function (args) {
     console.log('map page loaded');
-    Page = args;
-    //TASK 4.2: Register for Live Service
-
+    Page = args.object;
+    var promise = geolocation.getCurrentLocation({ desiredAccuracy: 3, updateDistance: 10, timeout: 20000 });
+    promise.then((location) => {
+        pageContext = new Observable();
+        pageContext.set("location", location);
+        locationObject = location;
+        Page.bindingContext = pageContext;
+    });
+    promise.catch((error) => {
+        console.log("An error occurred :" + error);
+    });
 };
 MapPage.prototype.changeMe = function (args) {
     //remove all markers
@@ -42,7 +44,7 @@ MapPage.prototype.changeMe = function (args) {
                 var query = new Kinvey.Query();
                 console.log(thisdist.text);
                 query.near('_geoloc', coord, Number(thisdist.text));
-                var dataStore = Kinvey.DataStore.collection('accounts', Kinvey.DataStoreType.Network);
+                var dataStore = Kinvey.DataStore.collection('location', Kinvey.DataStoreType.Network);
                 var stream = dataStore.find(query);
                 stream.subscribe(function onNext(entities) {
                     console.log(entities.length);
@@ -53,8 +55,8 @@ MapPage.prototype.changeMe = function (args) {
                         mapmarkers.push({
                             lat: thisaccount._geoloc[0],
                             lng: thisaccount._geoloc[1],
-                            title: thisaccount.accountname,
-                            subtitle: thisaccount.accountcompany
+                            title: m.name,
+                            subtitle: m.developer
                         });
                     }
                     mapObject.addMarkers(mapmarkers);
@@ -71,35 +73,23 @@ MapPage.prototype.changeMe = function (args) {
 MapPage.prototype.onMapReady = function (args) {
     console.log('map ready');
     mapObject = args.map;
-    //Task 5.4: Instead of querying the collection, let's use Live Service to susbcribe to changes.
-    var accountsDataStore = Kinvey.DataStore.collection('accounts', Kinvey.DataStoreType.Network);
-    accountsDataStore.subscribe({
-        onMessage: function (m) {
-            // handle incoming updates of entities in this collection
-            console.log(m);
-            mapmarkers.push({
-                lat: m._geoloc[0],
-                lng: m._geoloc[1],
-                title: m.accountname,
-                subtitle: m.accountcompany
-            });
-            mapObject.addMarkers(mapmarkers);
-        },
-        onStatus: function (s) {
-            // handle status events, which pertain to this collection
-            alert("Incoming Status");
-        },
-        onError: function (e) {
-            // handle error events, which pertain to this collection
-            alert("Incoming Error");
-        }
-    }).then(function () {
-        console.log("Successs");
-    })
-        .catch(function (e) {
-            console.log(e);
+    //Setting the center of the map to be the users current location
+    var currentLat = locationObject.latitude;
+    var currentLon = locationObject.longitude;
 
-        })
+    mapObject.setCenter(
+        {
+            lat: currentLat, // mandatory
+            lng: currentLon, // mandatory
+            animated: false // default true
+        });
+    //Set marker in the center of the map
+    mapObject.addMarkers([{
+        lat: currentLat,
+        lng: currentLon,
+    }]);
+    ///Task 5.4: Instead of querying the collection, let's use Live Service to susbcribe to changes.
+
 }
 exports.navigateTo = function (args) {
     console.log('HERE');

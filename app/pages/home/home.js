@@ -17,6 +17,21 @@ var source = new observableModule.Observable();
 HomePage.prototype.contentLoaded = function (args) {
     var page = args.object;
     console.log('home loaded');
+    const accountsStore = Kinvey.DataStore.collection('accounts', Kinvey.DataStoreType.Network);
+    accountsStore.subscribe({
+        onMessage: (m) => {
+            alert(m);
+        },
+        onStatus: (s) => {
+            // handle status events, which pertain to this collection
+        },
+        onError: (e) => {
+            alert(e);
+        }
+    })
+        .then(() => {/* success */ })
+        .catch(e => {/* handle error */ });
+
     var activeUser = Kinvey.User.getActiveUser();
     if (!activeUser) {
         topmost().navigate("pages/login/login");

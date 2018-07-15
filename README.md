@@ -18,6 +18,19 @@ Please follow the instructions below to set up your environment before attending
 * tns install
 * tns run android or tns run ios
 
+### Flex Prerequisites
+* Install Kinvey Cli : npm install -g kinvey-cli
+* Create a new directory for the flex project
+* Run npm init to generate "package.json". Make sure entry point is "index.js"
+* In the new project directory run : npm install --save kinvey-flex-sdk to add the flex dependency
+* Create a blank index.js file 
+
+## Node/Npm Tips and Tricks
+* Install nodemon to restart nodejs automagically on file save : npm install -g nodemon
+* Add the following to the scripts object in package.json 
+* * "dev": "nodemon --exec npm start",
+* * "deploy": "npm version --no-git-tag-version patch && kinvey flex deploy",
+* * "status": "kinvey flex job && kinvey flex status"
 
 
 
