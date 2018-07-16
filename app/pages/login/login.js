@@ -74,7 +74,7 @@ LoginPage.prototype.signIn = function (args) {
             password: pw
         })
             .then(function (user) {
-                console.log(user);
+                //console.log(user);
                 registerForLiveService(user);
 
             })
@@ -91,7 +91,7 @@ LoginPage.prototype.logout = function (args) {
     //TASK 2.3: LOG THE USER OUT
     var promise = Kinvey.User.logout()
         .then(function () {
-            alert("User Logged out");
+            console.log("User Logged out");
             unRegisterFromLiveService(activeUser);
         })
         .catch(function (error) {
@@ -109,7 +109,7 @@ LoginPage.prototype.signInMIC = function (args) {
     else {
         Kinvey.User.loginWithMIC('http://example.com/callback', Kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, { version: 'v3' })
             .then(function (user) {
-                console.log(user);
+                //console.log(user);
                 registerForLiveService(user);
                 topmost().navigate("pages/home/home");
             }).catch(function (error) {
@@ -122,7 +122,7 @@ function registerForLiveService(user) {
     //Task 5.2 : Register the active user for live service
     user.registerForLiveService()
         .then(() => {
-            alert("Registered for live service");
+            console.log("Registered for live service");
             topmost().navigate("pages/home/home");
         })
         .catch(err => {

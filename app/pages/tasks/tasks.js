@@ -23,8 +23,6 @@ TasksPage.prototype.contentLoaded = function (args) {
     page.bindingContext = tmpobservable;
     //TASK 3.2: RETRIEVE TASKS FROM SYNC STORE
     dataStore = Kinvey.DataStore.collection('tasks', Kinvey.DataStoreType.Sync);
-    this.pullMe(); //Fetch latest records
-    this.refreshMe();
 };
 
 TasksPage.prototype.refreshMe = function (args) {
@@ -49,29 +47,34 @@ TasksPage.prototype.syncMe = function (args) {
     console.log('syncMe');
     //TASK: SYNC CODE
     var promise = dataStore.sync()
-        .then(function (result) {
-            alert("Sync Succes");
+        .then(function (syncLog) {
+            console.dir(syncLog);
         })
         .catch(function (error) {
-            alert("Sync Failed");
+            console.log("Sync Failed: " + error);
         });
 };
 
 TasksPage.prototype.pullMe = function (args) {
     //TASK: PULL CODE
-    console.log('pullMe');
+    const promise = dataStore.pull()
+        .then(function (numOfRecords) {
+            console.log("Pulled down : " + numOfRecords);
+        })
+        .catch(function (error) {
+            console.log("Error: " + error);
+        });
 
 };
 
 TasksPage.prototype.pushMe = function (args) {
-    console.log('pushMe');
     //TASK: PUSH CODE
     var promise = dataStore.push()
         .then(function (result) {
-            alert("Push Succes");
+            console.log("Push Success : " + result);
         })
         .catch(function (error) {
-            alert("Push Failed");
+            console.log("Push Failed : " + error);
         });
 };
 
@@ -82,7 +85,6 @@ function onPageLoaded(args) {
 
 };
 exports.navigateTo = function (args) {
-    console.log('HERE');
 };
 module.exports = new TasksPage();
 exports.onPageLoad = onPageLoaded;

@@ -10,7 +10,7 @@ function BasePage() { }
 BasePage.prototype.pageObject = "something";
 BasePage.prototype.viewModel = appViewModel
 BasePage.prototype.pageLoaded = function (args) {
-  console.log('BASEPAGE PAGE LOADED METHOD CALLED');
+
   var page = args.object;
   // console.log(args.object);
   //SMI: Also saving in the prototype variable
@@ -18,8 +18,7 @@ BasePage.prototype.pageLoaded = function (args) {
   page.bindingContext = appViewModel;
 }
 BasePage.prototype.toggleDrawer = function () {
-  var page = topmost().currentPage;
-  page.getViewById("drawer").toggleDrawerState();
+  topmost().currentPage.getViewById("drawer").toggleDrawerState();
 }
 BasePage.prototype.navigate = function (args) {
   var pageName = args.view.id.toLowerCase();
@@ -28,10 +27,9 @@ BasePage.prototype.navigate = function (args) {
     if (activeUser) {
       Kinvey.User.logout()
         .then(function () {
-          alert("User Logged out");
           console.log('logged out');
           topmost().navigate("pages/login/login");
-          page.getViewById("drawer").toggleDrawerState();
+          topmost().currentPage.getViewById("drawer").toggleDrawerState();
         })
         .catch(function (error) {
           console.log(error.message);
