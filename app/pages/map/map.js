@@ -103,6 +103,15 @@ MapPage.prototype.onMapReady = function (args) {
          onMessage: (m) => {
              console.dir(m);
              //Add a marker here
+            mapObject.addMarkers([
+                {
+                lat: m._geoloc[0],
+                lng: m._geoloc[1],
+                title: m.accountname,
+                subtitle: m.accountcompany,
+                selected: true, // makes the callout show immediately when the marker is added (note: only 1 marker can be selected at a time)
+                }
+            ]);
          },
          onStatus: (s) => {
              console.dir(s);
