@@ -3,12 +3,17 @@ var view = require("ui/core/view");
 var Observable = require("data/observable").Observable;
 var Kinvey = require('kinvey-nativescript-sdk').Kinvey;
 var geolocation = require("nativescript-geolocation");
+var mapbox = require("nativescript-mapbox");
+var platform = require("platform");
+var isIOS = platform.device.os === platform.platformNames.ios;
+
 var mapmarkers = [];
 var counter = 0;
 var Page;
 var mapObject;
 var pageContext;
 var locationObject;
+var isMapLoaded = false;
 
 var MapPage = function () { };
 MapPage.prototype = new BasePage();
@@ -23,6 +28,15 @@ MapPage.prototype.onPageLoaded = function (args) {
         pageContext.set("location", location);
         locationObject = location;
         Page.bindingContext = pageContext;
+        //Set the center of the map if map is loaded and ready
+        if (isMapLoaded) {
+            mapObject.setCenter(
+                {
+                    lat: location.latitude, // mandatory
+                    lng: location.longitude, // mandatory
+                    animated: false // default true
+                });
+        }
     });
     promise.catch((error) => {
         console.log("An error occurred :" + error);
@@ -73,23 +87,30 @@ MapPage.prototype.changeMe = function (args) {
 MapPage.prototype.onMapReady = function (args) {
     console.log('map ready');
     mapObject = args.map;
-    //Setting the center of the map to be the users current location
-    var currentLat = locationObject.latitude;
-    var currentLon = locationObject.longitude;
-
-    mapObject.setCenter(
-        {
-            lat: currentLat, // mandatory
-            lng: currentLon, // mandatory
-            animated: false // default true
-        });
-    //Set marker in the center of the map
-    mapObject.addMarkers([{
-        lat: currentLat,
-        lng: currentLon,
-    }]);
+    isMapLoaded = !isMapLoaded;
+    if (locationObject.latitude && locationObject.longitude) {
+        mapObject.setCenter(
+            {
+                lat: locationObject.latitude, // mandatory
+                lng: locationObject.longitude, // mandatory
+                animated: false // default true
+            });
+    }
     ///Task 5.4: Instead of querying the collection, let's use Live Service to susbcribe to changes.
-
+    const accounts = Kinvey.DataStore.collection('accounts', Kinvey.DataStoreType.Network);
+    accounts.subscribe({
+        onMessage: (m) => {
+            console.dir(m);
+        },
+        onStatus: (s) => {
+            console.dir(s);
+        },
+        onError: (e) => {
+            console.dir(e);
+        }
+    })
+        .then(() => { console.log("subscribtion added") })
+        .catch(e => { console.log("error subscribing to collection : " + e) });
 }
 exports.navigateTo = function (args) {
     console.log('HERE');

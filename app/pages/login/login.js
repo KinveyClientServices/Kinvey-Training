@@ -31,7 +31,6 @@ LoginPage.prototype.signUp = function () {
                 username: email,
                 password: pw
             })
-
                 .then(function (user) {
                     //Register for live service
                     registerForLiveService(user);
@@ -101,7 +100,6 @@ LoginPage.prototype.logout = function (args) {
 
 LoginPage.prototype.signInMIC = function (args) {
     console.log('signInMIC');
-    //SMI: Check for active user
     var activeUser = Kinvey.User.getActiveUser();
     if (activeUser) {
         alert("User logged in. Log out first")
