@@ -21,61 +21,59 @@ TasksPage.prototype.contentLoaded = function (args) {
     console.log('tasks loaded');
     var page = args.object;
     page.bindingContext = tmpobservable;
-    //TASK 3.2: RETRIEVE TASKS FROM SYNC STORE
-    dataStore = Kinvey.DataStore.collection('tasks', Kinvey.DataStoreType.Sync);
+    //TASK 3.2: INITIALIZE THE SYNC DATA STORE FOR TASKS COLLECTION 
 };
 
 TasksPage.prototype.refreshMe = function (args) {
     console.log('refreshMe');
-    var subscription = dataStore.find()
-        .subscribe(function (entities) {
-            console.log("Retrieved " + entities.length + " records");
-            while (myItems.length > 0) {
-                myItems.pop();
-            }
-            for (i = 0; i < entities.length; i++) {
-                //console.log(entities[i]);
-                myItems.push(entities[i]);
-            }
-            tmpobservable.set("myItems", myItems);
-        }, function (error) {
-            console.log(error);
-        });
+
+    //TASK 3.4: FIND RECORDS AFTER PULL
+
+    /* .subscribe(function (entities) {
+        console.log("Retrieved " + entities.length + " records");
+        while (myItems.length > 0) {
+            myItems.pop();
+        }
+        for (i = 0; i < entities.length; i++) {
+            //console.log(entities[i]);
+            myItems.push(entities[i]);
+        }
+        tmpobservable.set("myItems", myItems);
+    }, function (error) {
+        console.log(error);
+    }); */
 };
 
 TasksPage.prototype.syncMe = function (args) {
     console.log('syncMe');
-    //TASK: SYNC CODE
-    var promise = dataStore.sync()
-        .then(function (syncLog) {
-            console.dir(syncLog);
-        })
-        .catch(function (error) {
-            console.log("Sync Failed: " + error);
-        });
+
+    //TASK 3.8: SYNC 
+
+    /*  .then(function (syncLog) {
+         console.dir(syncLog);
+     })
+     .catch(function (error) {
+         console.log("Sync Failed: " + error);
+     }); */
 };
 
 TasksPage.prototype.pullMe = function (args) {
-    //TASK: PULL CODE
-    const promise = dataStore.pull()
-        .then(function (numOfRecords) {
-            console.log("Pulled down : " + numOfRecords);
-        })
-        .catch(function (error) {
-            console.log("Error: " + error);
-        });
+    //TASK 3.3: PULL  
+
+    /* .then(function (numOfRecords) {
+        console.log("Pulled down : " + numOfRecords);
+    })
+    .catch(function (error) {
+        console.log("Error: " + error);
+    }); */
 
 };
 
 TasksPage.prototype.pushMe = function (args) {
-    //TASK: PUSH CODE
-    var promise = dataStore.push()
-        .then(function (result) {
-            console.log("Push Success : " + result);
-        })
-        .catch(function (error) {
-            console.log("Push Failed : " + error);
-        });
+
+    //TASK 3.7: PUSH 
+
+
 };
 
 

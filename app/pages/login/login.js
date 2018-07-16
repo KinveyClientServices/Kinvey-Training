@@ -111,7 +111,8 @@ LoginPage.prototype.signInMIC = function (args) {
 }
 
 function registerForLiveService(user) {
-    //Task 5.2 : Register the active user for live service
+    //Task 4.2 : REGISTER THE USER FOR LIVE SERVICE
+
     /* .then(() => {
         console.log("Registered for live service");
         topmost().navigate("pages/home/home");

@@ -90,15 +90,16 @@ TaskAddPage.prototype.taskSubmit = function (args) {
 
 saveTask = function (sourceEntity) {
     // console.dir(sourceEntity);
-    //TASK 3.3: SAVE THE ENTITY IN TASKS USING THE SYNC STORE
-    var promise = dataStore.save(sourceEntity)
-        .then(function (returnedEntity) {
-            resetViewModel();
-            console.log("Task Added Succesfully");
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+
+    //TASK 3.4: SAVE THE ENTITY IN TASKS USING THE SYNC STORE
+
+    /*  .then(function (returnedEntity) {
+         resetViewModel();
+         console.log("Task Added Succesfully");
+     })
+     .catch(function (error) {
+         console.log(error);
+     }); */
 }
 
 resetViewModel = function () {

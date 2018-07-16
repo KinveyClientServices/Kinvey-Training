@@ -96,21 +96,23 @@ MapPage.prototype.onMapReady = function (args) {
                 animated: false // default true
             });
     }
-    ///Task 5.4: Instead of querying the collection, let's use Live Service to susbcribe to changes.
-    const accounts = Kinvey.DataStore.collection('accounts', Kinvey.DataStoreType.Network);
-    accounts.subscribe({
-        onMessage: (m) => {
-            console.dir(m);
-        },
-        onStatus: (s) => {
-            console.dir(s);
-        },
-        onError: (e) => {
-            console.dir(e);
-        }
-    })
-        .then(() => { console.log("subscribtion added") })
-        .catch(e => { console.log("error subscribing to collection : " + e) });
+
+    // TASK 4.3 : MAP, _geoloc attribute and subscribing to collections 
+
+    /*  accounts.subscribe({
+         onMessage: (m) => {
+             console.dir(m);
+             //Add a marker here
+         },
+         onStatus: (s) => {
+             console.dir(s);
+         },
+         onError: (e) => {
+             console.dir(e);
+         }
+     })
+         .then(() => { console.log("subscribtion added") })
+         .catch(e => { console.log("error subscribing to collection : " + e) }); */
 }
 exports.navigateTo = function (args) {
     console.log('HERE');
