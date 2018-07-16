@@ -27,29 +27,27 @@ LoginPage.prototype.signUp = function () {
         pw = LoginPage.prototype.pageObject.getViewById("pw").text;
         if (email != "") {
             //TASK 2.1: ADD CODE FOR SIGNUP.
-            var promise = Kinvey.User.signup({
-                username: email,
-                password: pw
-            })
-                .then(function (user) {
-                    //Register for live service
-                    registerForLiveService(user);
-                    console.log("Succesful signup!");
-                    var dataStore = Kinvey.DataStore.collection('DemoBrandingData', Kinvey.DataStoreType.Network);
-                    var subscription = dataStore.find()
-                        .subscribe(function (entities) {
-                            console.log(entities);
-                        }, function (error) {
-                            console.log(error);
-                        }, function () {
-                            console.log('finished pulling home data');
-                        });
-                    topmost().navigate("pages/home/home");
-                })
-                .catch(function (error) {
-                    alert("Failure to signup!")
-                    console.log("error");
-                });
+
+            /* 
+                 .then(function (user) {
+                     //Register for live service
+                     registerForLiveService(user);
+                     console.log("Succesful signup!");
+                     var dataStore = Kinvey.DataStore.collection('DemoBrandingData', Kinvey.DataStoreType.Network);
+                     var subscription = dataStore.find()
+                         .subscribe(function (entities) {
+                             console.log(entities);
+                         }, function (error) {
+                             console.log(error);
+                         }, function () {
+                             console.log('finished pulling home data');
+                         });
+                     topmost().navigate("pages/home/home");
+                 })
+                 .catch(function (error) {
+                     alert("Failure to signup!")
+                     console.log("error");
+                 }); */
         }
         else {
             console.log("Email/Pass cannot be blank");
@@ -68,18 +66,15 @@ LoginPage.prototype.signIn = function (args) {
         alert("User logged in. Log out first")
     } else {
         //TASK 2.2: LOG THE USER IN
-        var promise = Kinvey.User.login({
-            username: email,
-            password: pw
-        })
-            .then(function (user) {
-                //console.log(user);
-                registerForLiveService(user);
 
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        /*  .then(function (user) {
+             //console.log(user);
+             registerForLiveService(user);
+
+         })
+         .catch(function (error) {
+             console.log(error);
+         }); */
     }
 };
 LoginPage.prototype.logout = function (args) {
@@ -88,14 +83,13 @@ LoginPage.prototype.logout = function (args) {
         console.log("There is an active user")
     }
     //TASK 2.3: LOG THE USER OUT
-    var promise = Kinvey.User.logout()
-        .then(function () {
-            console.log("User Logged out");
-            unRegisterFromLiveService(activeUser);
-        })
-        .catch(function (error) {
-            console.log(error.message);
-        });
+    /*  .then(function () {
+         console.log("User Logged out");
+         unRegisterFromLiveService(activeUser);
+     })
+     .catch(function (error) {
+         console.log(error.message);
+     }); */
 }
 
 LoginPage.prototype.signInMIC = function (args) {
@@ -105,27 +99,26 @@ LoginPage.prototype.signInMIC = function (args) {
         alert("User logged in. Log out first")
     }
     else {
-        Kinvey.User.loginWithMIC('http://example.com/callback', Kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, { version: 'v3' })
-            .then(function (user) {
-                //console.log(user);
-                registerForLiveService(user);
-                topmost().navigate("pages/home/home");
-            }).catch(function (error) {
-                console.log(error);
-            });
+        //TASK 2.4: SIGN IN WITH MOBILE IDENTITY CONNECT
+        /*  .then(function (user) {
+             //console.log(user);
+             registerForLiveService(user);
+             topmost().navigate("pages/home/home");
+         }).catch(function (error) {
+             console.log(error);
+         });  */
     }
 }
 
 function registerForLiveService(user) {
     //Task 5.2 : Register the active user for live service
-    user.registerForLiveService()
-        .then(() => {
-            console.log("Registered for live service");
-            topmost().navigate("pages/home/home");
-        })
-        .catch(err => {
-            alert("Error registering for live service");
-        });
+    /* .then(() => {
+        console.log("Registered for live service");
+        topmost().navigate("pages/home/home");
+    })
+    .catch(err => {
+        alert("Error registering for live service");
+    }); */
 }
 
 function unRegisterFromLiveService(user) {

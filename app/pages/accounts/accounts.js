@@ -18,26 +18,24 @@ var viewModel = new AccountsViewModel();
 AccountsPage.prototype.contentLoaded = function (args) {
     var page = args.object;
     page.bindingContext = viewModel;
-    //TASK 3.1: RETRIEVE THE ACCOUNTS LIST
-    var dataStore = Kinvey.DataStore.collection('accounts', Kinvey.DataStoreType.Cache);
-    var subscription = dataStore.find()
+    //TASK 3.1: RETRIEVE THE ACCOUNTS 
 
-        .subscribe(function (entities) {
-            console.log("Retrieved : " + entities.length);
-            //First clearing the myItems array.
-            while (myItems.length > 0) {
-                myItems.pop();
-            }
-            for (i = 0; i < entities.length; i++) {
-                //console.log(entities[i]);
-                myItems.push(entities[i]);
-            }
-            viewModel.set("myItems", myItems);
-        }, function (error) {
-            console.log(error);
-        }, function () {
-            console.log('pulled accounts');
-        });
+    /* .subscribe(function (entities) {
+        console.log("Retrieved : " + entities.length);
+        //First clearing the myItems array.
+        while (myItems.length > 0) {
+            myItems.pop();
+        }
+        for (i = 0; i < entities.length; i++) {
+            //console.log(entities[i]);
+            myItems.push(entities[i]);
+        }
+        viewModel.set("myItems", myItems);
+    }, function (error) {
+        console.log(error);
+    }, function () {
+        console.log('pulled accounts');
+    }); */
 };
 AccountsPage.prototype.selectAccount = function (args) {
     console.log('select account : ' + args.index);
