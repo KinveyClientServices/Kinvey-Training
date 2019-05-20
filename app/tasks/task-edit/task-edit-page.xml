@@ -1,0 +1,25 @@
+<Page class="page" xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" >
+    
+    <ActionBar class="action-bar">
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back" />
+        <Label class="action-bar-title" text="Edit Task" horizontalAlignment="center" />
+    </ActionBar>
+
+    <GridLayout class="page-content">
+        <ScrollView>
+          <StackLayout class="form" orientation="vertical" loaded="contentLoaded">
+            <ActivityIndicator busy="{{ isLoading }}" margin="10 0 0 0"></ActivityIndicator>
+            <Image width="10%" src="{{ task.imageUrl }}" margin="10 0 0 0" id="taskImage" />
+            <TextField class="input input-border" id="title" text="{{ task.title }}" hint="Title" />
+            <TextField class="input input-border" id="action" text="{{ task.action }}" hint="Description" />
+                    
+           <Label class="body" text="Due Date" style="font-size:15px;margin:50px;"></Label>
+            <DatePicker date="{{ task.duedate }}" />
+                        
+            <Label class="body" text="is complete?" style="font-size:15px; margin:50px;"></Label>
+            <Switch checked="{{ task.completed }}" />
+            <Button class="btn btn-outline" tap="onSubmitTaskTap" text="submit" />
+          </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>

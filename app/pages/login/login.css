@@ -1,5 +1,0 @@
-/* Adding the action-bar style explicitly since the brand data is not loaded up yet */
-action-bar {
-  background-color: #f1582c; 
-  color: white;
-} 

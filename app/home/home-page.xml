@@ -1,0 +1,42 @@
+<Page
+    class="page"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Home"></Label>
+    </ActionBar>
+
+    <GridLayout class="page-content">
+        <StackLayout row="0" class="m-b-25">
+            <Label class="t-30 text-center title" text="Welcome"></Label>
+            <Label class="t-18 text-center font-weight-bold" text="{{ loggedUser }}" ></Label>
+            <StackLayout class="hr"></StackLayout>
+            <Label class="page-icon fa" text="&#xf015;"></Label>
+            <Label class="page-placeholder" text=""></Label>
+            <TextView class="page-placeholder" style="margin:10px;" text="
+Welcome to the field tranining app.
+
+Use the training app to record your tasks and learn using the Kinvey SDK.
+
+You can create tasks and accounts from the pull out drawer.
+            "></TextView>
+        </StackLayout>
+        
+    </GridLayout>
+</Page>

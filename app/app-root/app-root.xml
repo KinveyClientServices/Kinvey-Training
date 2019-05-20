@@ -1,0 +1,61 @@
+<!--
+RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-started
+-->
+<nsDrawer:RadSideDrawer id="sideDrawer" xmlns:nsDrawer="nativescript-ui-sidedrawer" loaded="onLoaded">
+    <nsDrawer:RadSideDrawer.drawerTransition>
+        <nsDrawer:SlideInOnTopTransition/>
+    </nsDrawer:RadSideDrawer.drawerTransition>
+
+    <nsDrawer:RadSideDrawer.drawerContent>
+        <GridLayout rows="auto, *" class="sidedrawer sidedrawer-left">
+            <StackLayout class="sidedrawer-header">
+                <Label class="sidedrawer-header-image fas" text="&#xf2bd;" />
+                <Label class="sidedrawer-header-brand" text="{{ activeUserName}}" />
+                <Label class="footnote" text="{{ activeUser }}" />
+            </StackLayout>
+
+            <ScrollView row="1">
+                <StackLayout class="sidedrawer-content">
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Home' ? ' selected': '') }}"
+                        route="home/home-page" title="Home" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf015;" class="fas" />
+                        <Label row="0" col="1" text="Home" class="p-r-10" />
+                    </GridLayout>
+
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Accounts' ? ' selected': '') }}"
+                        route="accounts/accounts-page" title="Accounts" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf0c0;" class="fas" />
+                        <Label row="0" col="1" text="Accounts" class="p-r-10" />
+                    </GridLayout>
+
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Tasks' ? ' selected': '') }}"
+                        route="tasks/tasks-page" title="Tasks" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf0ae;" class="fas" />
+                        <Label row="0" col="1" text="Tasks" class="p-r-10" />
+                    </GridLayout>
+
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'TaskAdd' ? ' selected': '') }}"
+                        route="task-add/task-add-page" title="Add Task" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf0ae;" class="fas" />
+                        <Label row="0" col="1" text="Add Task" class="p-r-10" />
+                    </GridLayout>
+                    
+        
+                    <StackLayout class="hr-light"></StackLayout>
+
+                   <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Login' ? ' selected': '') }}"
+                        route="login/login-page" title="Login" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="{{ (activeUser === '' ? '&#xf2f6;': '&#xf2f5;') }}" class="fas" />
+                        <Label row="0" col="1" text="{{ (activeUser === '' ? 'Login': 'Logoff') }}" class="p-r-10" />
+                    </GridLayout>
+                </StackLayout>
+            </ScrollView>
+        </GridLayout>
+    </nsDrawer:RadSideDrawer.drawerContent>
+
+    <nsDrawer:RadSideDrawer.mainContent>
+        <Frame defaultPage="home/home-page"></Frame>
+    </nsDrawer:RadSideDrawer.mainContent>
+</nsDrawer:RadSideDrawer>
