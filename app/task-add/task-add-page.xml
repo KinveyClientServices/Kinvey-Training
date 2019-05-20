@@ -1,0 +1,42 @@
+<Page
+    class="page"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Add Task"></Label>
+    </ActionBar>
+
+    <GridLayout class="page-content">
+        <ScrollView>
+          <StackLayout class="form" orientation="vertical" loaded="contentLoaded">
+            <ActivityIndicator busy="{{ isLoading }}" margin="10 0 0 0"></ActivityIndicator>
+            <Image width="10%" src="{{ imageUrl }}" margin="10 0 0 0" id="taskImage" />
+            <TextField class="input input-border" id="title" text="{{ title }}" hint="Title" />
+            <TextField class="input input-border" id="action" text="{{ action }}" hint="Description" />
+                    
+            <Label class="body" text="Due Date" style="font-size:15px;margin:50px;"></Label>
+            <DatePicker date="{{ duedate }}" />
+                        
+            <Label class="body" text="is complete?" style="font-size:15px; margin:50px;"></Label>
+            <Switch checked="{{ completed }}" />
+            <Button class="btn btn-outline" tap="onAddTaskTap" text="add" />
+          </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>

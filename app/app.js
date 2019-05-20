@@ -5,6 +5,7 @@ purpose of the file is to pass control to the app’s first module.
 */
 require("./bundle-config");
 const application = require("tns-core-modules/application");
+//TASK 1.3: INITIALIZE KINVEY
 
 application.run({ moduleName: "app-root/app-root" });
 

@@ -45,7 +45,7 @@ https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-s
         
                     <StackLayout class="hr-light"></StackLayout>
 
-                   <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Login' ? ' selected': '') }}"
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Login' ? ' selected': '') }}"
                         route="login/login-page" title="Login" tap="onNavigationItemTap">
                         <Label row="0" col="0" text="{{ (activeUser === '' ? '&#xf2f6;': '&#xf2f5;') }}" class="fas" />
                         <Label row="0" col="1" text="{{ (activeUser === '' ? 'Login': 'Logoff') }}" class="p-r-10" />

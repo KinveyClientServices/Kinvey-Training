@@ -1,0 +1,46 @@
+<Page
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Tasks"/>>
+    </ActionBar>
+    <StackLayout orientation="vertical">
+         <StackLayout orientation="horizontal" width="400" height="70" backgroundColor="lightgray">
+            <Button class="my-button" text="find" tap="{{ refreshMe }}"></Button>
+            <Button class="my-button" text="pull" tap="{{ pullMe }}"></Button>
+            <Button class="my-button" text="push" tap="{{ pushMe }}"></Button>
+            <Button class="my-button" text="sync" tap="{{ syncMe }}"></Button>
+        </StackLayout>
+        <StackLayout orientation="horizontal" width="400" height="70" backgroundColor="lightgray">
+            <TextField text="{{ searchKeyword }}" hint="Search..." width="260"/>
+            <Button class="my-button" text="search" tap="{{ loadBySearch }}"></Button>
+        </StackLayout>
+        <ListView id="listview" items="{{ tasks }}" separatorColor="#aaa" itemTap="onTaskItemTap" height="1000">
+            <ListView.itemTemplate>
+                <GridLayout columns="75, auto" rows="auto, auto, auto">
+                    <Label text="&#xf0ae;" class="fas" row="1" rowSpan="2" col="0" style="font-size:30px; margin: 15, 10; font-weight: 900;"/>
+                    <Image src="{{ imageUrl }}" rowSpan="3" col="1"/>
+                    <Label text="{{ title }}" style="font-size:15px; font-weight:900;"  row="0" col="1"/>
+                    <Label text="{{ duedate }}"  style="font-size:12px" row="1" col="1"/>
+                    <Label text="{{ action }}" style="font-size:12px; font-weight:400;"  row="2" col="1"/>
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </StackLayout>
+</Page>
