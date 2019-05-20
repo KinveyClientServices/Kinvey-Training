@@ -13,8 +13,8 @@ Please follow the instructions below to set up your environment before attending
 
 
 ### Getting started
-* git clone https://github.com/KinveyClientServices/Kinvey-Training-NativeScript.git
-* cd Kinvey-Training-NativeScript
+* git clone https://github.com/KinveyClientServices/Kinvey-Training
+* cd Kinvey-Training
 * tns install
 * tns run android or tns run ios
 
