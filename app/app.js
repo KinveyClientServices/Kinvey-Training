@@ -6,7 +6,11 @@ purpose of the file is to pass control to the app’s first module.
 require("./bundle-config");
 const application = require("tns-core-modules/application");
 //TASK 1.3: INITIALIZE KINVEY
-
+var Kinvey = require("kinvey-nativescript-sdk");
+Kinvey.init({
+  appKey: "kid_BkpDu0dpZ",
+  appSecret: "595ac2474b2441b7a3d7e6c6d609a39a"
+});
 application.run({ moduleName: "app-root/app-root" });
 
 /*

@@ -32,11 +32,8 @@ function LoginViewModel() {
       const that = this;
       let activeUser = Kinvey.User.getActiveUser();
       if (activeUser === null) {
-        Kinvey.User.login({
-          username: this.email,
-          password: this.password
-        })
-          .then(user => {
+        /** Perform a Kinvey login */
+        /* .then(user => {
             activeUser = user;
             that._navigateHome(activeUser);
             console.log(`user: ${JSON.stringify(user)}`);
@@ -44,18 +41,20 @@ function LoginViewModel() {
           .catch(error => {
             alert(`An error occurred. ${error}`);
             console.log(`error: ${error}`);
-          });
+          }); 
+        */
       } else {
         this._navigateHome(activeUser);
       }
     },
+
     // TASK 2.3: ACTIVE USER & LOGOUT
     logout: function() {
       const that = this;
       const activeUser = Kinvey.User.getActiveUser();
       if (activeUser !== null) {
-        Kinvey.User.logout()
-          .then(() => {
+        /** perform a logout */
+        /* .then(() => {
             that._navigateLogin();
             console.log(`user logged out: ${JSON.stringify(activeUser)}`);
           })
@@ -63,25 +62,23 @@ function LoginViewModel() {
             alert("An error occurred. Check your Kinvey settings.");
             console.log(`error: ${error}`);
           });
+        */
       } else {
         this._navigateLogin();
       }
     },
+
     // TASK 2.1: SIGNUP
     signUp: function() {
       const that = this;
       if (this.password !== this.confirmPassword) {
         alert("Your passwords do not match.");
-
         return;
       }
       let activeUser = Kinvey.User.getActiveUser();
       if (activeUser === null) {
-        Kinvey.User.signup({
-          username: this.email,
-          password: this.password
-        })
-          .then(user => {
+        /* perform a signup */
+        /* .then(user => {
             activeUser = user;
             that._navigateHome(activeUser);
             console.log(`user: ${JSON.stringify(user)}`);
@@ -90,6 +87,7 @@ function LoginViewModel() {
             alert(`An error occurred. ${error}`);
             console.log(`error: ${error}`);
           });
+        */
       } else {
         alert(`User logged in, need to Logout. ${activeUser.data.username}`);
         console.log(
@@ -98,18 +96,14 @@ function LoginViewModel() {
         this._navigateHome(activeUser);
       }
     },
+
     // TASK 2.4 : SIGN IN WITH MOBILE IDENTITY CONNECT
     loginWithMic: function() {
       const that = this;
       let activeUser = Kinvey.User.getActiveUser();
       if (activeUser === null) {
-        // eslint-disable-next-line quotes
-        Kinvey.User.loginWithMIC(
-          "nsplayresume://",
-          Kinvey.AuthorizationGrant.AuthorizationCodeLoginPage,
-          { micId: "c3150059244644c4920a5819694561b1" }
-        )
-          .then(user => {
+        /** perform an MIC sign-in */
+        /* .then(user => {
             activeUser = user;
             that._navigateHome(activeUser);
             console.log(`user: ${JSON.stringify(user)}`);
@@ -118,10 +112,12 @@ function LoginViewModel() {
             alert("An error occurred. Check your Kinvey settings.");
             console.log(`error: ${error}`);
           });
+        */
       } else {
         this._navigateHome(activeUser);
       }
     },
+
     forgotPassword() {
       dialogsModule
         .prompt({
