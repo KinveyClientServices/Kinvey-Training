@@ -1,1 +1,1 @@
-module.exports = require("kinvey-nativescript-sdk/lib/before-checkForChanges.js");
+module.exports = require("kinvey-nativescript-sdk/nativescript-hook-scripts/before-checkForChanges.js");

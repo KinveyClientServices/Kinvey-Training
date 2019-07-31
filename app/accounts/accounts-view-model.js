@@ -3,7 +3,7 @@
 const observableModule = require("tns-core-modules/data/observable");
 const ObservableArray = require("tns-core-modules/data/observable-array")
   .ObservableArray;
-const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
+const Kinvey = require("kinvey-nativescript-sdk");
 const Account = require("./account-model");
 
 function AccountsViewModel(userInfo) {

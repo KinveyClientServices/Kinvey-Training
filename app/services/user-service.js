@@ -1,4 +1,4 @@
-const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
+const Kinvey = require("kinvey-nativescript-sdk");
 
 function handleErrors(error) {
     console.error(error.message);

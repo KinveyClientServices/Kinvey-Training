@@ -3,7 +3,7 @@
 const app = require("tns-core-modules/application");
 const topmost = require("tns-core-modules/ui/frame").topmost;
 const TaskAddViewModel = require("./task-add-view-model");
-const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
+const Kinvey = require("kinvey-nativescript-sdk");
 
 function onNavigatingTo(args) {
     const page = args.object;

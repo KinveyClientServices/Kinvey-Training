@@ -1,1 +1,1 @@
-module.exports = require("kinvey-nativescript-sdk/lib/before-preview-sync.js");
+module.exports = require("kinvey-nativescript-sdk/nativescript-hook-scripts/before-preview-sync.js");

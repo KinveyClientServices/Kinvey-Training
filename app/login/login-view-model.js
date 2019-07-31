@@ -2,7 +2,7 @@
 /* eslint-disable no-alert */
 const observableModule = require("tns-core-modules/data/observable");
 const dialogsModule = require("tns-core-modules/ui/dialogs");
-const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
+const Kinvey = require("kinvey-nativescript-sdk");
 const topmost = require("tns-core-modules/ui/frame").topmost;
 
 function LoginViewModel() {

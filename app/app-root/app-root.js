@@ -2,7 +2,7 @@
 /* eslint-disable no-alert */
 const application = require("tns-core-modules/application");
 const frameModule = require("tns-core-modules/ui/frame");
-const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
+const Kinvey = require("kinvey-nativescript-sdk");
 
 const AppRootViewModel = require("./app-root-view-model");
 
