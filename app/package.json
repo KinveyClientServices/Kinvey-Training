@@ -3,5 +3,14 @@
   "android": {
     "v8Flags": "--expose_gc",
     "markingMode": "none"
+  },
+  "pluginsData": {
+    "kinvey-nativescript-sdk": {
+      "config": {
+        "appKey": "kid_BkpDu0dpZ",
+        "appSecret": "595ac2474b2441b7a3d7e6c6d609a39a",
+        "redirectUri": "nsplayresume://"
+      }
+    }
   }
 }
