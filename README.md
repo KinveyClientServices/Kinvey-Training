@@ -31,7 +31,7 @@ Please follow the instructions below to set up your environment before attending
     * "start": "node .", 
     * "dev": "nodemon --exec npm start",
     * "deploy": "npm version --no-git-tag-version patch && kinvey flex deploy",
-    * "status": "kinvey flex job && kinvey flex status"
+    * "status": "kinvey flex status"
 
 
 
